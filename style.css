@@ -1,0 +1,621 @@
+:root {
+  --bg-color: #f0f2f5;
+  --sidebar-bg: #ffffff;
+  --text-primary: #1a1a1a;
+  --text-secondary: #718ebf;
+  --accent-blue: #2d60ff;
+  --accent-dark: #232323;
+  --danger: #ff4b4b;
+  --success: #41d4a8;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --card-gradient-1: linear-gradient(135deg, #2d60ff 0%, #5390ff 100%);
+  --card-gradient-2: linear-gradient(135deg, #4c49ed 0%, #0a06f1 100%);
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Outfit", sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  overflow-x: hidden;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 280px;
+  background: var(--sidebar-bg);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  border-right: 1px solid #e6eff5;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent-blue);
+  margin-bottom: 3rem;
+}
+
+.logo i {
+  font-size: 2rem;
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-grow: 1;
+}
+
+.nav-links a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  text-decoration: none;
+  color: var(--text-secondary);
+  border-radius: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+  color: var(--accent-blue);
+  background: rgba(45, 96, 255, 0.05);
+}
+
+.nav-links a.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 4px;
+  height: 32px;
+  background: var(--accent-blue);
+  border-radius: 0 4px 4px 0;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e6eff5;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.user-info h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.user-info p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+#logout {
+  margin-left: auto;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+#logout:hover {
+  color: var(--danger);
+}
+
+/* Main Content */
+.main-content {
+  flex-grow: 1;
+  padding: 2rem;
+  background: var(--bg-color);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #343c6a;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.search-bar {
+  background: white;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: var(--shadow-soft);
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  width: 250px;
+}
+
+.search-bar i {
+  color: #718ebf;
+}
+
+.icon-btn {
+  background: white;
+  border: none;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #fe5c73;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.2s;
+}
+
+.icon-btn:hover {
+  transform: translateY(-2px);
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+/* Glass Panel Utility */
+.glass-panel {
+  background: white;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-soft);
+  border: 1px solid white;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.section-header h2 {
+  font-size: 1.2rem;
+  color: #343c6a;
+}
+
+.view-all {
+  font-size: 0.9rem;
+  color: var(
+    --text-secondary
+  ); /* Corrected from #343C6A to match secondary text color or specific design */
+  text-decoration: none;
+  font-weight: 600;
+}
+.view-all:hover {
+  color: var(--accent-blue);
+}
+
+/* Cards Section */
+.card-container {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+}
+
+.credit-card {
+  min-width: 320px;
+  height: 200px;
+  border-radius: 25px;
+  padding: 1.5rem;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.credit-card:hover {
+  transform: translateY(-5px);
+}
+
+.credit-card.dark {
+  background: var(--card-gradient-1); /* Reverted to blue gradient */
+}
+
+/* Corrected .credit-card.light to act as the 'White' card from typical designs but with a twist */
+.credit-card.light {
+  background: white;
+  color: var(--text-primary); /* Dark text for light card */
+  border: 1px solid #dfeaf2;
+}
+.credit-card.light .card-top span,
+.credit-card.light .card-details span {
+  color: #718ebf;
+}
+.credit-card.light .card-number {
+  color: #343c6a;
+}
+
+.card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-top span {
+  font-size: 0.8rem;
+  opacity: 0.9;
+}
+
+.card-top h2 {
+  font-size: 1.4rem;
+  margin-top: 0.2rem;
+}
+
+.card-chip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0.8;
+}
+
+.card-chip i {
+  font-size: 1.5rem;
+}
+
+.card-details {
+  display: flex;
+  gap: 2rem;
+}
+
+.card-details span {
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  opacity: 0.8;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.card-details h4 {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.card-number {
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+/* Analytics Section */
+.analytics-section {
+  grid-column: 1 / 2;
+}
+.chart-container {
+  height: 300px;
+}
+
+/* Transactions Section */
+.transactions-section {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+}
+/* Re-arranging layout: 
+   Left Column: Cards (top), Analytics (bottom)
+   Right Column: Transactions (top), Quick Transfer (bottom)
+   But to match typical layouts:
+   Let's make top row: Cards (Left 2/3), Transactions (Right 1/3)
+   Bottom row: Analytics (Left 2/3), Quick Transfer (Right 1/3)
+*/
+
+/* Resetting Grid for better layout matching the design intent */
+/* Resetting Grid to move Transfer to bottom */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto auto; /* Added a row */
+    gap: 2rem;
+}
+
+.cards-section {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.transactions-section {
+    grid-column: 2 / 3;
+    grid-row: 1 / 3; /* Spans 2 rows */
+}
+
+.analytics-section {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+
+.transfer-section {
+    grid-column: 1 / 3; /* Span full width */
+    grid-row: 3 / 4; /* Move to bottom */
+}
+
+.transactions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%; /* Fill space */
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.t-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.t-icon.income {
+  background: #dcfaf1;
+  color: #41d4a8;
+}
+
+.t-icon.expense {
+  background: #ffe0eb;
+  color: #ff4b4b;
+}
+
+.t-info {
+  flex-grow: 1;
+}
+
+.t-info h4 {
+  font-size: 0.95rem;
+  color: #232323;
+}
+
+.t-info p {
+  font-size: 0.8rem;
+  color: #718ebf;
+}
+
+.t-amount {
+  font-weight: 600;
+}
+
+.t-amount.positive {
+  color: #41d4a8;
+}
+
+.t-amount.negative {
+  color: #ff4b4b;
+}
+
+/* Quick Transfer */
+.transfer-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.users-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.user-avatar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.user-avatar:hover {
+  transform: scale(1.1);
+}
+
+.user-avatar img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-avatar span {
+  font-size: 0.8rem;
+  color: #232323;
+  font-weight: 500; /* Boldness for selected state logic can be added via JS */
+}
+
+.user-avatar.selected span {
+  font-weight: 700;
+}
+
+.add-user {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: white;
+  border: 1px dashed #718ebf;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #718ebf;
+  cursor: pointer;
+}
+
+.transfer-input {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.transfer-input span {
+  font-size: 0.9rem;
+  color: #718ebf;
+  white-space: nowrap;
+}
+
+.amount-field {
+  background: #edf1f7;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  flex-grow: 1;
+}
+
+.amount-field input {
+  border: none;
+  background: transparent;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  font-size: 1rem;
+  color: #718ebf;
+  outline: none;
+}
+
+.send-btn {
+  background: #1814f3;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.send-btn:hover {
+  background: #0a06f1;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .transactions-section,
+  .transfer-section {
+    grid-column: 1 / 2;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 1rem;
+    flex-direction: row;
+    align-items: center;
+    border-right: none;
+    border-bottom: 1px solid #e6eff5;
+  }
+
+  .nav-links,
+  .user-profile {
+    display: none; /* Hide for simple mobile view mock */
+  }
+
+  .sidebar.active .nav-links {
+    /* Mobile menu logic would go here */
+    display: flex;
+    position: absolute;
+    top: 70px;
+    background: white;
+    width: 100%;
+    left: 0;
+    padding: 1rem;
+    z-index: 100;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .logo {
+    margin-bottom: 0;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .header-actions .search-bar input {
+    width: 150px;
+  }
+}

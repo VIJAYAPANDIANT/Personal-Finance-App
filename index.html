@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FinDash | Personal Finance</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Icons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="logo">
+          <i class="bx bxs-wallet-alt"></i>
+          <span>FinDash</span>
+        </div>
+
+        <nav class="nav-links">
+          <a href="#" class="active" data-target="dashboard"
+            ><i class="bx bxs-dashboard"></i> <span>Dashboard</span></a
+          >
+          <a href="#" data-target="transactions"
+            ><i class="bx bx-transfer-alt"></i> <span>Transactions</span></a
+          >
+          <a href="#" data-target="cards"
+            ><i class="bx bxs-credit-card"></i> <span>My Cards</span></a
+          >
+          <a href="#" data-target="analytics"
+            ><i class="bx bxs-pie-chart-alt-2"></i> <span>Analytics</span></a
+          >
+          <a href="#" data-target="settings"><i class="bx bxs-cog"></i> <span>Settings</span></a>
+        </nav>
+
+        <div class="user-profile">
+          <img
+            src="https://ui-avatars.com/api/?name=Vijayapandian+T&background=random"
+            alt="User"
+            class="avatar"
+          />
+          <div class="user-info">
+            <h4>Vijayapandian T</h4>
+            <p>Pro Member</p>
+          </div>
+          <i class="bx bx-log-out" id="logout"></i>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <header>
+          <h1 id="page-title">Overview</h1>
+          <div class="header-actions">
+            <div class="search-bar">
+              <i class="bx bx-search"></i>
+              <input type="text" placeholder="Search for transactions..." />
+            </div>
+            <button class="icon-btn"><i class="bx bx-bell"></i></button>
+            <button class="mobile-menu-btn"><i class="bx bx-menu"></i></button>
+          </div>
+        </header>
+
+         <!-- Views Container -->
+         <div id="main-container">
+            <!-- Dashboard View -->
+            <div id="dashboard" class="view-section active">
+                <div class="dashboard-grid">
+                  <!-- Cards Section -->
+                  <section class="cards-section">
+                    <div class="section-header">
+                      <h2>My Cards</h2>
+                      <a href="#" class="view-all">See All</a>
+                    </div>
+                    <div class="card-container">
+                      <!-- Glassmorphic Card 1 -->
+                      <div class="credit-card glass-card dark">
+                        <div class="card-top">
+                          <span>Balance</span>
+                          <h2>$24,098.00</h2>
+                        </div>
+                        <div class="card-chip">
+                          <img
+                            src="https://raw.githubusercontent.com/dasShounak/freeUseImages/main/chip.png"
+                            alt="chip"
+                            width="40"
+                          />
+                          <i class="bx bx-wifi"></i>
+                        </div>
+                        <div class="card-details">
+                          <div class="holder">
+                            <span>CARD HOLDER</span>
+                            <h4>Vijayapandian T</h4>
+                          </div>
+                          <div class="expiry">
+                            <span>EXPIRES</span>
+                            <h4>12/26</h4>
+                          </div>
+                        </div>
+                        <div class="card-number">**** **** **** 4582</div>
+                      </div>
+        
+                      <!-- Secondary Card -->
+                      <div class="credit-card glass-card light">
+                        <div class="card-top">
+                          <span>Balance</span>
+                          <h2>$5,240.50</h2>
+                        </div>
+                        <div class="card-chip">
+                          <img
+                            src="https://raw.githubusercontent.com/dasShounak/freeUseImages/main/chip.png"
+                            alt="chip"
+                            width="40"
+                            style="filter: invert(1)"
+                          />
+                          <i class="bx bx-wifi"></i>
+                        </div>
+                        <div class="card-details">
+                          <div class="holder">
+                            <span>CARD HOLDER</span>
+                            <h4>Vijayapandian T</h4>
+                          </div>
+                          <div class="expiry">
+                            <span>EXPIRES</span>
+                            <h4>08/25</h4>
+                          </div>
+                        </div>
+                        <div class="card-number">**** **** **** 1290</div>
+                      </div>
+                    </div>
+                  </section>
+        
+                  <!-- Analytics Chart -->
+                  <section class="analytics-section">
+                    <div class="section-header">
+                      <h2>Weekly Activity</h2>
+                    </div>
+                    <div class="chart-container glass-panel">
+                      <canvas id="weeklyChart"></canvas>
+                    </div>
+                  </section>
+        
+                  <!-- Recent Transactions -->
+                  <section class="transactions-section">
+                    <div class="section-header">
+                      <h2>Recent Transactions</h2>
+                      <a href="#" class="view-all">View All</a>
+                    </div>
+                    <div class="transactions-list glass-panel">
+                      <div class="transaction-item">
+                        <div class="t-icon income"><i class="bx bx-dollar"></i></div>
+                        <div class="t-info">
+                          <h4>Salary Deposit</h4>
+                          <p>18 Jan 2026</p>
+                        </div>
+                        <div class="t-amount positive">+$4,500</div>
+                      </div>
+                      <div class="transaction-item">
+                        <div class="t-icon expense"><i class="bx bx-basket"></i></div>
+                        <div class="t-info">
+                          <h4>Grocery Store</h4>
+                          <p>17 Jan 2026</p>
+                        </div>
+                        <div class="t-amount negative">-$120.50</div>
+                      </div>
+                      <div class="transaction-item">
+                        <div class="t-icon expense"><i class="bx bx-joystick"></i></div>
+                        <div class="t-info">
+                          <h4>Steam Games</h4>
+                          <p>16 Jan 2026</p>
+                        </div>
+                        <div class="t-amount negative">-$45.00</div>
+                      </div>
+                      <div class="transaction-item">
+                        <div class="t-icon expense"><i class="bx bx-coffee"></i></div>
+                        <div class="t-info">
+                          <h4>Starbucks</h4>
+                          <p>15 Jan 2026</p>
+                        </div>
+                        <div class="t-amount negative">-$8.50</div>
+                      </div>
+                    </div>
+                  </section>
+        
+                  <!-- Quick Transfer -->
+                  <section class="transfer-section">
+                    <div class="section-header">
+                      <h2>Quick Transfer</h2>
+                    </div>
+                    <div class="transfer-panel glass-panel">
+                      <div class="users-row">
+                        <div class="user-avatar selected">
+                          <img
+                            src="https://ui-avatars.com/api/?name=Livia&background=FF5733&color=fff"
+                            alt="User"
+                          />
+                          <span>Livia</span>
+                        </div>
+                        <div class="user-avatar">
+                          <img
+                            src="https://ui-avatars.com/api/?name=Randy&background=33FF57&color=fff"
+                            alt="User"
+                          />
+                          <span>Randy</span>
+                        </div>
+                        <div class="user-avatar">
+                          <img
+                            src="https://ui-avatars.com/api/?name=Work&background=3357FF&color=fff"
+                            alt="User"
+                          />
+                          <span>Work</span>
+                        </div>
+                        <div class="add-user">
+                          <i class="bx bx-plus"></i>
+                        </div>
+                      </div>
+                      <div class="transfer-input">
+                        <span>Amount</span>
+                        <div class="amount-field">
+                          <input type="number" value="50.00" placeholder="0.00" />
+                          <button class="send-btn">
+                            Send <i class="bx bx-paper-plane"></i>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                </div> <!-- End Dashboard Grid -->
+            </div> <!-- End Dashboard ID -->
+            
+            <!-- Transactions View -->
+            <div id="transactions" class="view-section" style="display: none;">
+                <div class="glass-panel">
+                    <h2>All Transactions</h2>
+                    <br>
+                    <p>Detailed transaction history will appear here.</p>
+                    <!-- Reusing the list style for demo -->
+                    <div class="transactions-list" style="margin-top: 2rem;">
+                        <div class="transaction-item"><div class="t-icon income"><i class='bx bx-dollar'></i></div><div class="t-info"><h4>Freelance Work</h4><p>20 Jan 2026</p></div><div class="t-amount positive">+$1,200</div></div>
+                        <div class="transaction-item"><div class="t-icon expense"><i class='bx bx-movie'></i></div><div class="t-info"><h4>Cinema</h4><p>19 Jan 2026</p></div><div class="t-amount negative">-$30.00</div></div>
+                        <div class="transaction-item"><div class="t-icon expense"><i class='bx bx-taxi'></i></div><div class="t-info"><h4>Uber Ride</h4><p>18 Jan 2026</p></div><div class="t-amount negative">-$25.50</div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards View -->
+            <div id="cards" class="view-section" style="display: none;">
+                <div class="section-header"><h2>Your Wallet</h2></div>
+                <div class="card-container" style="flex-wrap: wrap;">
+                        <div class="credit-card glass-card dark"><div class="card-top"><span>Balance</span><h2>$24,098.00</h2></div><div class="card-chip"><img src="https://raw.githubusercontent.com/dasShounak/freeUseImages/main/chip.png" alt="chip" width="40"><i class='bx bx-wifi'></i></div><div class="card-details"><div class="holder"><span>CARD HOLDER</span><h4>Vijayapandian T</h4></div><div class="expiry"><span>EXPIRES</span><h4>12/26</h4></div></div><div class="card-number">**** **** **** 4582</div></div>
+                </div>
+            </div>
+
+            <!-- Analytics View -->
+            <div id="analytics" class="view-section" style="display: none;">
+                <div class="glass-panel">
+                    <h2>Detailed Analytics</h2>
+                    <p style="margin-top: 1rem; color: #718ebf;">More detailed charts and graphs would go here.</p>
+                </div>
+            </div>
+
+            <!-- Settings View -->
+            <div id="settings" class="view-section" style="display: none;">
+                <div class="glass-panel">
+                    <h2>Account Settings</h2>
+                    <form style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem; max-width: 400px;">
+                        <label style="color: #718ebf; font-size: 0.9rem;">Display Name</label>
+                        <input type="text" value="Vijayapandian T" style="padding: 1rem; border: 1px solid #e1e1e1; border-radius: 10px; outline: none;">
+                        
+                        <label style="color: #718ebf; font-size: 0.9rem;">Email</label>
+                        <input type="email" value="user@example.com" style="padding: 1rem; border: 1px solid #e1e1e1; border-radius: 10px; outline: none;">
+                        
+                        <button style="background: #1814F3; color: white; border: none; padding: 1rem; border-radius: 10px; cursor: pointer; font-weight: 600;">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+         </div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
